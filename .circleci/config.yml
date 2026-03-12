@@ -30,7 +30,7 @@ jobs:
       - restore_cache:
           key: dependency-cache-{{ checksum "package-lock.json" }}
       - run:
-          name: install-npm
+          name: install-npm-wee
           command: npm install
       - run:
           name: test-run
@@ -47,5 +47,4 @@ jobs:
       - add_ssh_keys
       - run:
           name: deploy-application
-          command: ssh -o StrictHostKeyChecking=no $EC2_USERNAME@$EC2_PUBLIC_DNS \
-                    "export PRIVATE_KEY='$PRIVATE_KEY'; export SERVER='$SERVER'; bash ~/CA1DevOpSecSimpleApplication/deploy.sh"
+          command: ssh -o StrictHostKeyChecking=no $EC2_USERNAME@$EC2_PUBLIC_DNS "export PRIVATE_KEY='$PRIVATE_KEY'; export SERVER='$SERVER'; rm -rf CA1DevOpSecSimpleApplication/;git clone https://github.com/EKL-NCI/CA1DevOpSecSimpleApplication; source CA1DevOpSecSimpleApplication/deploy.sh""
