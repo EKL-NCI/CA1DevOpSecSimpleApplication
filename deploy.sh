@@ -7,10 +7,8 @@ cd ~/CA1DevOpSecSimpleApplication || exit 1
 
 npm install
 
-printf "%s\n" "$PRIVATE_KEY" > privatekey.pem
-printf "%s\n" "$SERVER" > server.crt
-
-chmod 600 privatekey.pem server.crt
+echo $PRIVATE_KEY > privatekey.pem
+echo $SERVER > server.crt
 
 pm2 delete SimpleApplication || true
 pm2 start ./bin/www --name SimpleApplication --env=production
