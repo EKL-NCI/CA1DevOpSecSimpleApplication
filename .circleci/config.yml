@@ -47,8 +47,4 @@ jobs:
       - add_ssh_keys
       - run:
           name: deploy-application
-          command: ssh -o StrictHostKeyChecking=no $EC2_USERNAME@$EC2_PUBLIC_IP "
-                      rm -rf ~/CA1DevOpSecSimpleApplication &&
-                      git clone https://github.com/EKL-NCI/DevOpSecCASampleApplication.git ~/CA1DevOpSecSimpleApplication &&
-                      bash ~/CA1DevOpSecSimpleApplication/deploy.sh
-                    "
+          command: ssh -o StrictHostKeyChecking=no $EC2_USERNAME@$EC2_PUBLIC_IP " rm -rf ~/CA1DevOpSecSimpleApplication && git clone https://github.com/EKL-NCI/CA1DevOpSecSimpleApplication.git ~/CA1DevOpSecSimpleApplication && bash ~/CA1DevOpSecSimpleApplication/deploy.sh"
